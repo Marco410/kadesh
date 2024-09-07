@@ -1,0 +1,88 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:animation_wrappers/animation_wrappers.dart';
+import 'package:flutter/material.dart';
+import 'package:pet_app/data/theme/style.dart';
+import 'package:sizer_pro/sizer.dart';
+
+class CustomButton extends StatelessWidget {
+  final String? text;
+  final Color? color;
+  final Color? textColor;
+  final double? width;
+  final Function()? onTap;
+  final EdgeInsets? margin;
+  final BorderRadius? borderRadius;
+  final bool isDisabled;
+  bool loading = false;
+  String? size = 'md';
+  Widget? icon;
+
+  CustomButton(
+      {super.key,
+      required this.text,
+      this.color,
+      this.textColor = Colors.white,
+      this.onTap,
+      this.width,
+      this.margin,
+      this.loading = false,
+      this.isDisabled = false,
+      this.size,
+      this.icon,
+      this.borderRadius});
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return FadedScaleAnimation(
+      child: Container(
+        width: width ?? double.infinity,
+        margin:
+            margin ?? const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        decoration: BoxDecoration(
+            color: isDisabled ? Colors.grey : color ?? theme.primaryColor,
+            borderRadius: borderRadius ?? BorderRadius.circular(12)),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: isDisabled ? null : onTap as void Function()?,
+            borderRadius: borderRadius ?? BorderRadius.circular(12),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: (size == 'sm') ? 3.sp : 4.5.sp,
+                  horizontal: (size == 'sm') ? 3.sp : 4.5.sp),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon ?? const SizedBox(),
+                  if (icon != null) const SizedBox(width: 10),
+                  (loading)
+                      ? SizedBox(
+                          height: 25,
+                          width: 25,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                            color:
+                                ((color ?? theme.primaryColor) == Colors.white)
+                                    ? ColorsStyle.secondaryColor
+                                    : Colors.white,
+                          ),
+                        )
+                      : Text(
+                          text!,
+                          style: TextStyle(
+                              color: textColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: (size == 'sm') ? 5.f : 7.f),
+                          textAlign: TextAlign.center,
+                        ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

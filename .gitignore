@@ -52,3 +52,4 @@ app.*.map.json
 .dart_tool/package_config_subset
 .dart_tool/package_config.json
 .vscode
+ios/Podfile.lock

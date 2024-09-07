@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/data/theme/style.dart';
 
 final ThemeData appTheme = ThemeData(
   fontFamily: 'Poppins',
   scaffoldBackgroundColor: Colors.white,
-  primaryColor: const Color(0xff585CE5),
+  primaryColor: ColorsStyle.primaryColor,
   hintColor: Colors.black45,
   dividerColor: Colors.black,
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
