@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:pet_app/config/service/client_service.dart';
+import 'package:pet_app/domain/services/client_service.dart';
 
 void main() async {
   runApp(MyApp(
