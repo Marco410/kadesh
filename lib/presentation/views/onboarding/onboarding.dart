@@ -56,7 +56,7 @@ class OnbordingState extends State<Onbording> {
       floatingActionButton: Bounceable(
         onTap: () {
           if (currentIndex == contents.length - 1) {
-            context.pushNamed('home');
+            context.pushNamed('login');
             prefs.show_onboarding = false;
           }
           _controller.nextPage(

@@ -1,8 +1,10 @@
+import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:pet_app/data/routes/app_router.dart';
 import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
+import 'package:pet_app/data/theme/themes.dart';
 import 'package:pet_app/domain/services/client_service.dart';
 import 'package:pet_app/data/theme/theme_style.dart';
 import 'package:sizer_pro/sizer.dart';
@@ -38,6 +40,8 @@ class _MyAppState extends ConsumerState<MyApp> {
           title: 'Kadesh',
           theme: appTheme,
           routerConfig: appRouter,
+          //darkTheme: CustomThemes.darkTheme,
+          //themeMode: EasyDynamicTheme.of(context).themeMode,
           /* builder: BotToastInit(), */
           /*  localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,

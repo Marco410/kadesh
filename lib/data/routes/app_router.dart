@@ -1,9 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_app/presentation/views/home.dart';
-import 'package:pet_app/presentation/views/onboarding/onboarding.dart';
-import 'package:pet_app/presentation/views/splash/splash_screen.dart';
-import 'package:pet_app/presentation/views/error/error_screen.dart';
+
+import '../../presentation/views/screens.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -17,6 +15,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           path: '/onboarding',
           name: 'onboarding',
           builder: (context, state) => const Onbording(),
+        ),
+        GoRoute(
+          path: '/login',
+          name: 'login',
+          builder: (context, state) => const LoginScreen(),
         ),
         GoRoute(
           path: '/home',

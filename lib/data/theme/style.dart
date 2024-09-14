@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class ColorsStyle {
-  static const primaryColor = Color(0xffF85046);
-  static const secondaryColor = Color(0xffECF9FC);
+  static const primaryColor = Color(0xff03C9F3);
+  static const secondaryColor = Color(0xff01F363);
   static const thirdColor = Color(0xffFFF6E9);
   static const hintColor = Color(0xFFC5C6CC);
   static const hintWhite = Color(0xFFC4C4C4);
