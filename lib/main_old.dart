@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           final users = result.data?['users'] ?? [];
 
           return Container(
-            decoration: BoxDecoration(color: Colors.red),
+            decoration: const BoxDecoration(color: Colors.red),
             child: ListView.builder(
               itemCount: users.length,
               itemBuilder: (context, index) {
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return ListTile(
                   title: Text(
                     user['name'] + ' ' + user['email'],
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 );
               },
