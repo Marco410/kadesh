@@ -2,21 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class ColorsStyle {
-  static const primaryColor = Color(0xff03C9F3);
-  static const secondaryColor = Color(0xff01F363);
-  static const thirdColor = Color(0xffFFF6E9);
+  static const primaryColor = Color(0xffF7945E);
+  static const secondaryColor = Color(0xffA99286);
+  static const thirdColor = Color(0xffF4DFD8);
+  static const primaryLightColor = Color(0xffFCE2D2);
   static const hintColor = Color(0xFFC5C6CC);
   static const hintWhite = Color(0xFFC4C4C4);
   static const hintDarkColor = Color(0xFF8F9098);
-  static const dark = Color(0xff1E1E1E);
+  static const dark = Color(0xff4D4E52);
+  static const success = Color(0xFF31BC33);
+  static const successLight = Color(0xFFE4FBD6);
+  static const blue = Color(0xFF46AFFE);
+  static const blueLight = Color(0xFFDBF7FF);
+  static const warning = Color(0xFFFFB601);
+  static const warningLight = Color(0xFFFFF6CC);
+  static const error = Color(0xFFFF3A30);
+  static const errorLight = Color(0xFFFFE5D5);
 }
 
 class TxtStyle {
   static final headerStyle = TextStyle(
-      fontFamily: "Poppins",
-      fontSize: 10.f,
+      fontFamily: "Dongle",
+      fontSize: 25.f,
       fontWeight: FontWeight.w800,
-      color: Colors.black87,
+      color: ColorsStyle.dark,
       letterSpacing: 1.5);
 
   static final descriptionStyle = TextStyle(
@@ -28,10 +37,10 @@ class TxtStyle {
       fontWeight: FontWeight.w400);
 
   static final labelStyle = TextStyle(
-      fontFamily: "Poppins",
-      color: Colors.black,
+      fontFamily: "Dongle",
+      color: ColorsStyle.dark,
       fontWeight: FontWeight.bold,
-      fontSize: 4.5.f);
+      fontSize: 10.f);
 
   static final hintText = TextStyle(
       color: ColorsStyle.hintDarkColor,
@@ -40,16 +49,20 @@ class TxtStyle {
 }
 
 class ShadowStyle {
-  static const generalShadow = BoxShadow(
-    color: Color(0x26AAA9A9),
-    blurRadius: 8,
-    spreadRadius: 2,
-    offset: Offset(0, 6),
-  );
+  static List<BoxShadow> generalShadow = [
+    const BoxShadow(
+      color: Color(0x26AAA9A9),
+      blurRadius: 8,
+      spreadRadius: 2,
+      offset: Offset(0, 6),
+    )
+  ];
 
-  static BoxShadow containerShadow = BoxShadow(
-      color: Colors.black.withOpacity(0.4),
-      blurRadius: 4,
-      spreadRadius: 0,
-      offset: const Offset(0, 0));
+  static List<BoxShadow> containerShadow = [
+    BoxShadow(
+        color: Colors.black.withOpacity(0.4),
+        blurRadius: 4,
+        spreadRadius: 0,
+        offset: const Offset(0, 0))
+  ];
 }

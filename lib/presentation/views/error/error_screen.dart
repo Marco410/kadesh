@@ -18,7 +18,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Página no encontrada",
             textAlign: TextAlign.center,
           ),

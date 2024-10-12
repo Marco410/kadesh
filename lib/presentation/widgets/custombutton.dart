@@ -2,6 +2,8 @@
 
 import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:pet_app/data/theme/style.dart';
 import 'package:sizer_pro/sizer.dart';
 
@@ -10,7 +12,7 @@ class CustomButton extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final double? width;
-  final Function()? onTap;
+  final Function() onTap;
   final EdgeInsets? margin;
   final BorderRadius? borderRadius;
   final bool isDisabled;
@@ -21,9 +23,9 @@ class CustomButton extends StatelessWidget {
   CustomButton(
       {super.key,
       required this.text,
+      required this.onTap,
       this.color,
       this.textColor = Colors.white,
-      this.onTap,
       this.width,
       this.margin,
       this.loading = false,
@@ -36,18 +38,20 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return FadedScaleAnimation(
-      child: Container(
-        width: width ?? double.infinity,
-        margin:
-            margin ?? const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        decoration: BoxDecoration(
-            color: isDisabled ? Colors.grey : color ?? theme.primaryColor,
-            borderRadius: borderRadius ?? BorderRadius.circular(12)),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: isDisabled ? null : onTap as void Function()?,
-            borderRadius: borderRadius ?? BorderRadius.circular(12),
+      child: Bounceable(
+        onTap: () {
+          Haptics.vibrate(HapticsType.selection);
+          onTap();
+        },
+        child: Container(
+          width: width ?? double.infinity,
+          margin: margin ??
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          decoration: BoxDecoration(
+              color: isDisabled ? Colors.grey : color ?? theme.primaryColor,
+              borderRadius: borderRadius ?? BorderRadius.circular(12)),
+          child: Material(
+            color: Colors.transparent,
             child: Padding(
               padding: EdgeInsets.symmetric(
                   vertical: (size == 'sm') ? 3.sp : 4.5.sp,
