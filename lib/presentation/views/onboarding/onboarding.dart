@@ -31,21 +31,25 @@ class OnbordingState extends State<Onbording> {
 
   List<UnbordingContent> contents = [
     UnbordingContent(
-        title: 'Añade animales',
-        image: 'assets/backs/1.png',
+        title: 'Añade animales perdidos',
+        image: 'assets/backs/form1.png',
         discription:
-            "¿Te encontraste un animal perdido, un animal en peligro o una mascota en riesgo? "
-            "Vas por la calle y ves un animal en peligro. Subelo rapidamente y ayuda a que reciba el mejor trato o a que gente encuentre a su mascota perdida."),
+            "¿Te encontraste un animal perdido, un animal en peligro o una mascota en riesgo? Vas por la calle y ves un animal en peligro. Subelo rápidamente y ayuda a que reciba el mejor trato o a que la gente encuentre a su mascota perdida."),
     UnbordingContent(
         title: 'Busca tu veterinaria',
-        image: 'assets/backs/2.png',
+        image: 'assets/backs/form2.png',
         discription: "¿No sabes donde hay una veterinaria cerca? "
-            "Encuentra veterinarias cerca de ti, conoce cuales atienden 24hrs y añade tus reseñas."),
+            "Encuentra veterinarias cerca de ti, conoce cuales atienden 24 horas y añade tus reseñas."),
     UnbordingContent(
         title: '¿Tienes un refugio?',
-        image: 'assets/backs/3.png',
+        image: 'assets/backs/form1.png',
         discription: "Agrega tu refugio para que más personas lo encuentren. "
             "Añade tu información y ayuda a que la gente conozca más lugares para ayudar a los animales."),
+    UnbordingContent(
+        title: 'Busca lo mejor para tu mascota',
+        image: 'assets/backs/form2.png',
+        discription:
+            "Encuentra en nuestra tienda en línea los mejores artículos para cuidar de tus mascotas."),
   ];
 
   @override
@@ -56,7 +60,7 @@ class OnbordingState extends State<Onbording> {
       floatingActionButton: Bounceable(
         onTap: () {
           if (currentIndex == contents.length - 1) {
-            context.pushNamed('home');
+            context.pushNamed('login');
             prefs.show_onboarding = false;
           }
           _controller.nextPage(
@@ -81,7 +85,7 @@ class OnbordingState extends State<Onbording> {
       body: Column(
         children: [
           Expanded(
-            flex: 10,
+            flex: 11,
             child: PageView.builder(
               controller: _controller,
               itemCount: contents.length,
@@ -92,33 +96,57 @@ class OnbordingState extends State<Onbording> {
                 });
               },
               itemBuilder: (_, i) {
-                return Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(contents[i].image))),
-                  child: FadeAnimation(
-                    child: Padding(
-                      padding: const EdgeInsets.all(50),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 90),
-                          const Icon(Icons.pets_rounded,
-                              size: 200, color: ColorsStyle.primaryColor),
-                          Text(
-                            contents[i].title,
-                            textAlign: TextAlign.center,
-                            style: TxtStyle.headerStyle,
+                return Stack(
+                  children: [
+                    (i == 0)
+                        ? Positioned(
+                            top: -50,
+                            right: 200,
+                            child: Image.asset("assets/backs/form1.png"))
+                        : (i == 1)
+                            ? Positioned(
+                                top: -244,
+                                left: 100,
+                                child: Image.asset("assets/backs/form2.png"))
+                            : (i == 2)
+                                ? Positioned(
+                                    top: -301,
+                                    right: 101,
+                                    child:
+                                        Image.asset("assets/backs/form1.png"))
+                                : Positioned(
+                                    top: 0,
+                                    left: 130,
+                                    child:
+                                        Image.asset("assets/backs/form2.png")),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FadeAnimation(
+                        child: Padding(
+                          padding: const EdgeInsets.all(50),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.pets_rounded,
+                                  size: 150, color: ColorsStyle.primaryColor),
+                              const SizedBox(height: 20),
+                              Text(
+                                contents[i].title,
+                                textAlign: TextAlign.center,
+                                style:
+                                    TxtStyle.headerStyle.copyWith(height: 0.7),
+                              ),
+                              const SizedBox(height: 20),
+                              Text(contents[i].discription,
+                                  textAlign: TextAlign.center,
+                                  style: TxtStyle.descriptionStyle
+                                      .copyWith(fontSize: 7.f))
+                            ],
                           ),
-                          const SizedBox(height: 20),
-                          Text(contents[i].discription,
-                              textAlign: TextAlign.center,
-                              style: TxtStyle.descriptionStyle
-                                  .copyWith(fontSize: 8.f))
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 );
               },
             ),

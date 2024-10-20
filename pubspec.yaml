@@ -2,7 +2,7 @@ name: pet_app
 description: "A new Flutter project."
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=3.4.1 <4.0.0"
@@ -21,6 +21,13 @@ dependencies:
   shared_preferences: ^2.3.2
   intl: ^0.19.0
   flutter_localization: ^0.2.2
+  easy_dynamic_theme: ^2.3.1
+  flutter_svg: ^2.0.9
+  haptic_feedback: ^0.5.1+1
+  toastification: ^2.3.0
+
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -34,4 +41,11 @@ flutter:
   assets:
     - assets/
     - assets/backs/
-  #   - images/a_dot_ham.jpeg
+    - assets/icons/
+
+  fonts:
+    - family: Dongle
+      fonts:
+        - asset: assets/fonts/dongle/Dongle-Bold.ttf
+        - asset: assets/fonts/dongle/Dongle-Light.ttf
+        - asset: assets/fonts/dongle/Dongle-Regular.ttf

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
+import 'package:pet_app/data/theme/style.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -24,9 +25,9 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
 
   Future<void> navigatorPage() async {
     if (prefs.show_onboarding) {
-      context.pushNamed('onboarding');
+      context.goNamed('onboarding');
     } else {
-      context.pushNamed('home');
+      context.goNamed('login');
     }
   }
 
@@ -48,9 +49,9 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       key: _scaffoldKey,
       body: const Center(
           child: Icon(
-        Icons.pedal_bike,
+        Icons.donut_large_rounded,
         size: 70,
-        color: Colors.blueGrey,
+        color: ColorsStyle.primaryColor,
       )),
     );
   }
