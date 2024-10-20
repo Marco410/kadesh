@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id">444625015315882</string>
-    <string name="facebook_client_token">b4ea1d3dea66fc82215eb78141630f33</string>
+    <string name="facebook_app_id"></string>
+    <string name="facebook_client_token"></string>
 </resources>
