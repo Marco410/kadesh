@@ -7,6 +7,7 @@ import 'package:pet_app/domain/services/client_service.dart';
 import 'package:pet_app/data/theme/theme_style.dart';
 import 'package:sizer_pro/sizer.dart';
 import 'package:toastification/toastification.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,14 +45,14 @@ class _MyAppState extends ConsumerState<MyApp> {
             //darkTheme: CustomThemes.darkTheme,
             //themeMode: EasyDynamicTheme.of(context).themeMode,
             /* builder: BotToastInit(), */
-            /*  localizationsDelegates: const [
+            localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
-            ], */
-            /*   supportedLocales: const [
+            ],
+            supportedLocales: const [
               Locale('es'),
-            ], */
+            ],
           ),
         );
       }),

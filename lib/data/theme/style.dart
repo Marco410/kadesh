@@ -18,6 +18,7 @@ class ColorsStyle {
   static const warningLight = Color(0xFFFFF6CC);
   static const error = Color(0xFFFF3A30);
   static const errorLight = Color(0xFFFFE5D5);
+  static const white = Colors.white;
 }
 
 class TxtStyle {
@@ -26,6 +27,7 @@ class TxtStyle {
       fontSize: 25.f,
       fontWeight: FontWeight.w800,
       color: ColorsStyle.dark,
+      height: 0.7,
       letterSpacing: 1.5);
 
   static final descriptionStyle = TextStyle(
@@ -55,6 +57,15 @@ class ShadowStyle {
       blurRadius: 8,
       spreadRadius: 2,
       offset: Offset(0, 6),
+    )
+  ];
+
+  static List<BoxShadow> btnShadow = [
+    const BoxShadow(
+      color: Color(0x26AAA9A9),
+      blurRadius: 5,
+      spreadRadius: 1,
+      offset: Offset(0, 0),
     )
   ];
 
