@@ -14,9 +14,16 @@ class _HomeScreenState extends State<HomeScreen> {
     final prefs = PreferenciasUsuario();
     return Scaffold(
       body: Center(
-        child: InkWell(
-            onTap: () => prefs.show_onboarding = true,
-            child: const Text("Home")),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+                onTap: () => prefs.show_onboarding = true,
+                child: const Text("Home")),
+            Text(prefs.userName),
+            Text(prefs.email),
+          ],
+        ),
       ),
     );
   }

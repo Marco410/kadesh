@@ -1,3 +1,4 @@
+import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 
 class BackWidget extends StatelessWidget {
@@ -11,12 +12,16 @@ class BackWidget extends StatelessWidget {
       children: [
         Positioned(
             bottom: -150,
-            left: 100,
-            child: Image.asset("assets/backs/form2.png")),
+            left: 195,
+            child: Hero(
+                tag: 'form2', child: Image.asset("assets/backs/form2.png"))),
         Positioned(
             top: -400,
-            right: 200,
-            child: Image.asset("assets/backs/form1.png")),
+            right: 250,
+            child: Hero(
+                tag: 'form1',
+                child: FadeAnimation(
+                    child: Image.asset("assets/backs/form1.png")))),
         widget,
       ],
     );

@@ -26,6 +26,9 @@ dependencies:
   haptic_feedback: ^0.5.1+1
   toastification: ^2.3.0
 
+  flutter_localizations:
+    sdk: flutter
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

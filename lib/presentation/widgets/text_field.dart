@@ -26,29 +26,32 @@ class TextFieldWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool? readOnly;
   final Function(String value)? onChange;
+  final bool hasError;
+  final String errorText;
 
-  TextFieldWidget({
-    super.key,
-    this.formatters,
-    this.suffixText,
-    this.isVisible = true,
-    this.labelColor = ColorsStyle.dark,
-    this.border = true,
-    this.suffixIcon,
-    this.margin,
-    this.prefixIcon,
-    this.color,
-    this.onTap,
-    this.controller,
-    this.lines,
-    this.readOnly = false,
-    this.onChange,
-    this.focusNode,
-    this.isRequired = true,
-    this.textInputType = TextInputType.text,
-    this.hintText = "Escribe aquí",
-    required this.label,
-  });
+  TextFieldWidget(
+      {super.key,
+      this.formatters,
+      this.suffixText,
+      this.isVisible = true,
+      this.labelColor = ColorsStyle.dark,
+      this.border = true,
+      this.suffixIcon,
+      this.margin,
+      this.prefixIcon,
+      this.color,
+      this.onTap,
+      this.controller,
+      this.lines,
+      this.readOnly = false,
+      this.onChange,
+      this.focusNode,
+      this.isRequired = true,
+      this.textInputType = TextInputType.text,
+      this.hintText = "Escribe aquí",
+      required this.label,
+      this.hasError = false,
+      this.errorText = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +123,7 @@ class TextFieldWidget extends StatelessWidget {
               (label != "")
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 0),
+                          horizontal: 10, vertical: 0),
                       child: Text(
                         '$label ${(isRequired) ? "*" : ""}',
                         style: TxtStyle.labelStyle,
@@ -129,11 +132,12 @@ class TextFieldWidget extends StatelessWidget {
                   : const SizedBox(),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                   color: color ?? Colors.white,
                   border: border
                       ? Border.all(
-                          color: (formField.hasError)
+                          color: (formField.hasError || hasError)
                               ? ColorsStyle.error
                               : ColorsStyle.hintColor)
                       : Border.all(color: Colors.transparent),
@@ -141,7 +145,9 @@ class TextFieldWidget extends StatelessWidget {
                   boxShadow: [
                     (!border)
                         ? BoxShadow(
-                            color: ColorsStyle.dark.withOpacity(0.3),
+                            color: (formField.hasError || hasError)
+                                ? ColorsStyle.error.withOpacity(0.7)
+                                : ColorsStyle.dark.withOpacity(0.3),
                             blurRadius: 15,
                             spreadRadius: -5,
                             offset: const Offset(2, 4))
@@ -184,11 +190,11 @@ class TextFieldWidget extends StatelessWidget {
                       focusColor: Colors.black),
                 ),
               ),
-              (formField.hasError)
+              (formField.hasError || hasError)
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 2),
+                      padding: const EdgeInsets.only(left: 15, top: 7),
                       child: Text(
-                        formField.errorText!,
+                        formField.errorText ?? errorText,
                         style: TextStyle(color: Colors.red, fontSize: 4.5.sp),
                       ),
                     )

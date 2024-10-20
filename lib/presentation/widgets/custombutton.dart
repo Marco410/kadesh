@@ -49,6 +49,7 @@ class CustomButton extends StatelessWidget {
               const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           decoration: BoxDecoration(
               color: isDisabled ? Colors.grey : color ?? theme.primaryColor,
+              boxShadow: ShadowStyle.btnShadow,
               borderRadius: borderRadius ?? BorderRadius.circular(12)),
           child: Material(
             color: Colors.transparent,

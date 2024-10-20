@@ -8,10 +8,28 @@ class AuthMutations {
       item {
         name
         lastName
+        secondLastName
         username
         email
+        phone
+        role
+        profileImage {
+          url
+        }
+        birthday
+        age
       }
     }
   }
 }""";
+
+  static const String createUser = """
+  
+  mutation Mutation(\$data: UserCreateInput!) {
+    createUser(data: \$data) {
+      name
+    }
+  }
+
+""";
 }

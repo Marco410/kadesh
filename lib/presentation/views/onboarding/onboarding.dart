@@ -108,10 +108,17 @@ class OnbordingState extends State<Onbording> {
                                 top: -244,
                                 left: 100,
                                 child: Image.asset("assets/backs/form2.png"))
-                            : Positioned(
-                                top: -301,
-                                right: 101,
-                                child: Image.asset("assets/backs/form1.png")),
+                            : (i == 2)
+                                ? Positioned(
+                                    top: -301,
+                                    right: 101,
+                                    child:
+                                        Image.asset("assets/backs/form1.png"))
+                                : Positioned(
+                                    top: 0,
+                                    left: 130,
+                                    child:
+                                        Image.asset("assets/backs/form2.png")),
                     SizedBox(
                       width: double.infinity,
                       child: FadeAnimation(
