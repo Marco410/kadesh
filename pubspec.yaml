@@ -28,6 +28,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  video_player: ^2.9.5
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +43,8 @@ flutter:
     - assets/
     - assets/backs/
     - assets/icons/
+    - assets/images/
+    - assets/video/
 
   fonts:
     - family: Dongle

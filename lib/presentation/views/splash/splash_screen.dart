@@ -45,14 +45,26 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      body: const Center(
-          child: Icon(
-        Icons.donut_large_rounded,
-        size: 70,
-        color: ColorsStyle.primaryColor,
-      )),
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: SizedBox.expand(
+            child: Image.asset(
+              'assets/images/labrador.jpg',
+              opacity: const AlwaysStoppedAnimation(0.6),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          key: _scaffoldKey,
+          body: const Center(
+            child: ImageIcon(AssetImage("assets/icons/dog-cat.png"),
+                size: 100, color: ColorsStyle.primaryColor),
+          ),
+        ),
+      ],
     );
   }
 }
