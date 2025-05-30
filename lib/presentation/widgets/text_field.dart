@@ -126,7 +126,7 @@ class TextFieldWidget extends StatelessWidget {
                           horizontal: 10, vertical: 0),
                       child: Text(
                         '$label ${(isRequired) ? "*" : ""}',
-                        style: TxtStyle.labelStyle,
+                        style: TxtStyle.labelStyle.copyWith(color: labelColor),
                       ),
                     )
                   : const SizedBox(),
