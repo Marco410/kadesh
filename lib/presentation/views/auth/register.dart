@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:pet_app/data/helpers/handle_errors.dart';
 import 'package:pet_app/data/theme/style.dart';
 import 'package:pet_app/domain/mutations/auth.dart';
 import 'package:pet_app/domain/queries/auth.dart';
@@ -26,8 +27,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   bool isVisible = false;
   TextEditingController nameController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
   TextEditingController secondLastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController birthController = TextEditingController();
@@ -40,6 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     final client = GraphQLProvider.of(context).value;
     return Scaffold(
+      backgroundColor: ColorsStyle.background,
       extendBodyBehindAppBar: false,
       body: GestureDetector(
         onTap: () {
@@ -94,46 +96,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         lineAtTop: false,
                       ),
                       const SizedBox(height: 15),
-                      TextFieldWidget(
-                        label: "Nombre",
-                        border: false,
-                        textInputType: TextInputType.text,
-                        controller: nameController,
-                        onChange: (v) {
-                          Random random = Random();
-                          setState(() {
-                            userNameController.text =
-                                v.trim().replaceAll(" ", "-").toLowerCase() +
-                                    random.nextInt(99).toString();
-                          });
-                        },
-                      ),
                       const SizedBox(height: 15),
-                      /*
                       Row(
                         children: [
                           Expanded(
                             child: TextFieldWidget(
-                              label: "Apellido Paterno",
+                              label: "Nombre",
                               border: false,
                               textInputType: TextInputType.text,
-                              controller: lastNameController,
+                              controller: nameController,
+                              onChange: (v) {
+                                Random random = Random();
+                                setState(() {
+                                  userNameController.text =
+                                      "${v.trim().toLowerCase()} ${lastNameController.text.trim().toLowerCase()}${random.nextInt(99)}"
+                                          .replaceAll(" ", ".");
+                                });
+                              },
                             ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
                             child: TextFieldWidget(
-                              label: "Apellido Materno",
+                              label: "Apellido",
                               border: false,
                               textInputType: TextInputType.text,
-                              controller: secondLastNameController,
-                              isRequired: false,
+                              controller: lastNameController,
+                              isRequired: true,
+                              onChange: (v) {
+                                Random random = Random();
+                                setState(() {
+                                  userNameController.text =
+                                      "${nameController.text.trim().toLowerCase()} ${v.trim().toLowerCase()}${random.nextInt(99)}"
+                                          .replaceAll(" ", ".");
+                                });
+                              },
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 15),
-                      */
                       Query(
                           options: QueryOptions(
                               document: gql(AuthQueries.searchUserName),
@@ -255,68 +257,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Mutation(
                         options: MutationOptions(
                           document: gql(AuthMutations.createUser),
-                          onCompleted: (dynamic resultData) async {
-                            if (resultData == null) {
-                              return;
-                            }
-                            final result = await client.mutate(
-                              MutationOptions(
-                                document: gql(AuthMutations.loginMutation),
-                                variables: {
-                                  "email": emailController.text,
-                                  "password": passwordController.text
-                                },
-                              ),
-                            );
+                          onCompleted: (resultData) async {
+                            if (resultData == null) return;
 
-                            final resp = AuthController.login(
-                                result.data!["authenticateUserWithPassword"]);
-                            if (resp) {
-                              // ignore: use_build_context_synchronously
-                              context.goNamed('home');
-                            } else {
-                              ToastUI.instance
-                                  .toastError("Intente de nuevo más tarde.");
-                            }
-                          },
-                          onError: (error) {
-                            if (error is OperationException &&
-                                error.graphqlErrors.isNotEmpty) {
-                              final graphqlError = error.graphqlErrors.first;
+                            try {
+                              final loginResult = await client.mutate(
+                                MutationOptions(
+                                  document: gql(AuthMutations.loginMutation),
+                                  variables: {
+                                    "email": emailController.text.trim(),
+                                    "password": passwordController.text,
+                                  },
+                                ),
+                              );
 
-                              if (graphqlError.extensions?['code'] ==
-                                      'KS_PRISMA_ERROR' &&
-                                  graphqlError.extensions?['prisma']?['code'] ==
-                                      'P2002') {
-                                final target = graphqlError
-                                    .extensions?['prisma']?['meta']?['target'];
+                              final authData = loginResult
+                                  .data?["authenticateUserWithPassword"];
+                              if (authData == null) {
+                                ToastUI.instance.toastError(
+                                    "Error al iniciar sesión. Intenta más tarde.");
+                                return;
+                              }
 
-                                if (target != null &&
-                                    target.contains('username')) {
-                                  ToastUI.instance.toastWarning(
-                                      "Este nombre de usuario ya está en uso. Intenta inicar sesión.");
-                                } else if (target != null &&
-                                    target.contains('email')) {
-                                  ToastUI.instance.toastWarning(
-                                      "Este correo electrónico ya está en uso. Intenta inicar sesión.");
-                                } else {
-                                  ToastUI.instance.toastError(
-                                      "Error de restricción única.");
+                              final success = AuthController.login(authData);
+                              if (success) {
+                                if (context.mounted) {
+                                  context.goNamed('home');
                                 }
                               } else {
                                 ToastUI.instance
                                     .toastError("Intente de nuevo más tarde.");
                               }
-                            } else {
+                            } catch (e) {
                               ToastUI.instance.toastError(
-                                  "Ocurrió un error. Intente de nuevo más tarde.");
+                                  "Error inesperado. Intenta más tarde.");
                             }
+                          },
+                          onError: (error) {
+                            final errorMsg = handleGraphQLError(error);
+                            ToastUI.instance.toastError(errorMsg);
                           },
                         ),
                         builder: (runMutation, result) {
+                          final isLoading = result?.isLoading ?? false;
+
                           return CustomButton(
                             text: "Registrarme",
                             margin: const EdgeInsets.only(top: 15, bottom: 10),
+                            loading: isLoading,
                             onTap: () {
                               if (!_formKey.currentState!.validate()) {
                                 ToastUI.instance.toastWarning(
@@ -324,14 +312,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return;
                               }
 
-                              if (passwordConfirmController.text !=
-                                  passwordController.text) {
+                              final password = passwordController.text;
+                              final confirmPassword =
+                                  passwordConfirmController.text;
+
+                              if (password != confirmPassword) {
                                 ToastUI.instance.toastWarning(
-                                    "Las contraseñas deben de coincidir..");
+                                    "Las contraseñas deben coincidir.");
                                 return;
                               }
 
-                              if (passwordController.text.length < 8) {
+                              if (password.length < 8) {
                                 ToastUI.instance.toastWarning(
                                     "La contraseña debe tener al menos 8 caracteres.");
                                 return;
@@ -339,15 +330,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               final data = {
                                 "data": {
-                                  "email": emailController.text,
-                                  "password": passwordController.text,
-                                  "name": nameController.text,
-                                  "username": userNameController.text,
-                                }
+                                  "email": emailController.text.trim(),
+                                  "password": password,
+                                  "name": nameController.text.trim(),
+                                  "lastName": lastNameController.text.trim(),
+                                  "username": userNameController.text
+                                },
                               };
+
                               runMutation(data);
                             },
-                            loading: result!.isLoading,
                           );
                         },
                       ),

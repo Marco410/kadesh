@@ -3,6 +3,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:pet_app/data/helpers/handle_errors.dart';
 import 'package:pet_app/data/theme/style.dart';
 import 'package:pet_app/domain/controllers/auth_controller.dart';
 import 'package:pet_app/domain/mutations/auth.dart';
@@ -128,47 +129,62 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           Mutation(
                             options: MutationOptions(
                               document: gql(AuthMutations.loginMutation),
-                              onCompleted: (dynamic resultData) {
-                                if (resultData["authenticateUserWithPassword"]
-                                        ["__typename"] ==
+                              onCompleted: (resultData) {
+                                final response =
+                                    resultData?["authenticateUserWithPassword"];
+
+                                if (response == null) {
+                                  ToastUI.instance.toastError(
+                                      "Error inesperado. Intente más tarde.");
+                                  return;
+                                }
+
+                                final typename = response["__typename"];
+
+                                if (typename ==
                                     "UserAuthenticationWithPasswordFailure") {
                                   ToastUI.instance.toastError(
                                       "Usuario o contraseña incorrectos.");
                                   return;
                                 }
 
-                                final resp = AuthController.login(
-                                    resultData["authenticateUserWithPassword"]);
+                                final success = AuthController.login(response);
 
-                                if (resp) {
+                                if (success) {
                                   context.goNamed('home');
                                 } else {
                                   ToastUI.instance.toastError(
                                       "Intente de nuevo más tarde.");
                                 }
                               },
+                              onError: (error) {
+                                final errorMsg = handleGraphQLError(error);
+                                ToastUI.instance.toastError(errorMsg);
+                              },
                             ),
                             builder: (runMutation, result) {
-                              if (result!.hasException) {
-                                return const SizedBox();
-                              }
+                              final isLoading = result?.isLoading ?? false;
+
                               return CustomButton(
-                                text: "Inciar sesión",
+                                text: "Iniciar sesión",
                                 margin:
                                     const EdgeInsets.only(top: 15, bottom: 5),
+                                loading: isLoading,
                                 onTap: () {
                                   if (!_formKey.currentState!.validate()) {
                                     ToastUI.instance.toastWarning(
                                         "Ingresa los datos requeridos.");
                                     return;
                                   }
-                                  final data = {
-                                    "email": emailController.text,
-                                    "password": passwordController.text
-                                  };
-                                  runMutation(data);
+
+                                  final email = emailController.text.trim();
+                                  final password = passwordController.text;
+
+                                  runMutation({
+                                    "email": email,
+                                    "password": password,
+                                  });
                                 },
-                                loading: result.isLoading,
                               );
                             },
                           ),

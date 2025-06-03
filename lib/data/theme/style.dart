@@ -19,6 +19,7 @@ class ColorsStyle {
   static const error = Color(0xFFFF3A30);
   static const errorLight = Color(0xFFFFE5D5);
   static const white = Colors.white;
+  static const background = Color(0xFFFFF9F2);
 }
 
 class TxtStyle {
