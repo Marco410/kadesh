@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:pet_app/presentation/widgets/logo_widget.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -60,8 +60,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
           backgroundColor: Colors.transparent,
           key: _scaffoldKey,
           body: const Center(
-            child: ImageIcon(AssetImage("assets/icons/dog-cat.png"),
-                size: 100, color: ColorsStyle.primaryColor),
+            child: LogoWidget(),
           ),
         ),
       ],

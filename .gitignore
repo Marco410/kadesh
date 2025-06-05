@@ -56,3 +56,4 @@ app.*.map.json
 .vscode
 ios/Podfile.lock
 android/app/src/main/res/values/strings.xml
+fingers.txt

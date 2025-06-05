@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:pet_app/data/theme/style.dart';
@@ -44,15 +45,27 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
               )
             : const SizedBox(),
         (widget.lineAtTop) ? const SizedBox(height: 25) : const SizedBox(),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButtonWidget(
               icon: 'facebook',
               iconColor: Colors.blue,
+              onTap: () async {
+                print("Facebook login pressed");
+                final LoginResult result = await FacebookAuth.instance.login();
+                print("result");
+                print(result);
+                if (result.status == LoginStatus.success) {
+                  final AccessToken accessToken = result.accessToken!;
+                } else {
+                  print(result.status);
+                  print(result.message);
+                }
+              },
             ),
-            SizedBox(width: 25),
-            IconButtonWidget(
+            const SizedBox(width: 25),
+            const IconButtonWidget(
               icon: 'google',
               iconColor: Colors.redAccent,
             ),
@@ -113,8 +126,8 @@ class IconButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Bounceable(
       onTap: () {
+        isDisabled ? null : onTap!() as void Function()?;
         Haptics.vibrate(HapticsType.selection);
-        isDisabled ? null : onTap as void Function()?;
       },
       child: Container(
         padding: const EdgeInsets.all(15),

@@ -29,6 +29,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   video_player: ^2.9.5
+  flutter_facebook_auth: ^7.1.2
+  google_sign_in: ^6.3.0
 
 dev_dependencies:
   flutter_test:
