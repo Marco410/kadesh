@@ -35,6 +35,8 @@ dependencies:
   flutter_flavor: ^3.1.4
   flutter_dotenv: ^5.2.1
   #google_maps_flutter: ^2.12.3
+  flutter_facebook_auth: ^7.1.2
+  google_sign_in: ^6.3.0
 
 dev_dependencies:
   flutter_test:

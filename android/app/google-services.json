@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "224737492413",
+    "project_id": "kadesh-a2d09",
+    "storage_bucket": "kadesh-a2d09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224737492413:android:376cfbe594dbe776d766d4",
+        "android_client_info": {
+          "package_name": "com.kadesh.mc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX_plqG28-fnLV_Tt7GJoBef88fSE9pto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

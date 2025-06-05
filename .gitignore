@@ -57,3 +57,4 @@ ios/Podfile.lock
 android/app/src/main/res/values/strings.xml
 .env
 .env.dev
+fingers.txt
