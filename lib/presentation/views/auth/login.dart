@@ -82,6 +82,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          const LogoWidget(),
                           Text(
                             "¡Bienvenido!",
                             style: TxtStyle.headerStyle
@@ -148,7 +149,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   return;
                                 }
 
-                                final success = AuthController.login(response);
+                                final success =
+                                    AuthController.loginSaveData(response);
 
                                 if (success) {
                                   context.goNamed('home');

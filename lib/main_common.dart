@@ -26,6 +26,10 @@ Future<void> mainCommon({required Flavor flavor, required String name}) async {
     variables: {},
   );
 
+   await Firebase.initializeApp(
+    options: DefaultFirebaseConfig.platformOptions,
+  );
+
   await dotenv.load(
       fileName: FlavorConfigOptions.isDev() ? ".env.dev" : ".env");
 

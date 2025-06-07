@@ -58,3 +58,4 @@ android/app/src/main/res/values/strings.xml
 .env
 .env.dev
 fingers.txt
+.env

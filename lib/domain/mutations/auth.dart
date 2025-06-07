@@ -23,6 +23,16 @@ class AuthMutations {
   }
 }""";
 
+  static const String customLoginMutation = """
+    mutation CustomAuth(\$email: String!, \$name: String, \$lastName: String) {
+      customAuth(email: \$email, name: \$name, lastName: \$lastName) {
+        data
+        message
+        success
+      }
+    }
+  """;
+
   static const String createUser = """
   
   mutation Mutation(\$data: UserCreateInput!) {

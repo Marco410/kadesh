@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer_pro/sizer.dart';
 
-class KColors {
+class KColors {   
   static const primaryColor = Color(0xffF7945E);
   static const secondaryColor = Color(0xffA99286);
   static const thirdColor = Color(0xffF4DFD8);
@@ -20,6 +20,7 @@ class KColors {
   static const errorLight = Color(0xFFFFE5D5);
   static const white = Colors.white;
   static const background = Color(0xFFF4F6F8);
+  static const hintLightColor = Color(0xFFE0E0E0);
 }
 
 class TxtStyle {

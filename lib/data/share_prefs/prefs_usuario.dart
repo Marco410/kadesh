@@ -29,12 +29,12 @@ class PreferenciasUsuario with ChangeNotifier {
     _prefs.setBool("show_onboarding", value);
   }
 
-  String get userID {
-    return _prefs.getString("userID") ?? "";
+  String get id {
+    return _prefs.getString("id") ?? "";
   }
 
-  set userID(String value) {
-    _prefs.setString("userID", value);
+  set id(String value) {
+    _prefs.setString("id", value);
   }
 
   String get sessionToken {
@@ -117,11 +117,19 @@ class PreferenciasUsuario with ChangeNotifier {
     _prefs.setString("birthday", value ?? "");
   }
 
-  String? get age {
-    return _prefs.getString("age");
+  int? get age {
+    return _prefs.getInt("age");
   }
 
-  set age(String? value) {
-    _prefs.setString("age", value ?? "");
+  set age(int? value) {
+    _prefs.setInt("age", value ?? 0);
+  }
+
+  bool? get verified {
+    return _prefs.getBool("verified");
+  }
+
+  set verified(bool? value) {
+    _prefs.setBool("verified", value ?? false);
   }
 }

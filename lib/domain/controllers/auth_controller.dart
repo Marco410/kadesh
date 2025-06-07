@@ -1,20 +1,51 @@
 import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
+import 'package:kadesh/data/models/user.dart';
 
 class AuthController {
-  static bool login(dynamic data) {
+  static bool loginSaveData(dynamic data) {
     try {
       final prefs = PreferenciasUsuario();
-      prefs.sessionToken = data["sessionToken"];
-      prefs.name = data["item"]["name"];
-      prefs.lastName = data["item"]["lastName"];
-      prefs.secondLastName = data["item"]["secondLastName"];
-      prefs.userName = data["item"]["username"];
-      prefs.email = data["item"]["email"];
-      prefs.phone = data["item"]["phone"];
-      prefs.role = data["item"]["role"];
-      prefs.profileImage = data["item"]["profileImage"];
-      prefs.birthday = data["item"]["birthday"];
-      prefs.age = data["item"]["age"];
+
+      if (data == null || data["item"] == null) return false;
+
+      final item = data["item"] as Map<String, dynamic>;
+
+      prefs.sessionToken = data["sessionToken"] ?? '';
+      prefs.name = item["name"] ?? '';
+      prefs.lastName = item["lastName"] ?? '';
+      prefs.secondLastName = item["secondLastName"] ?? '';
+      prefs.userName = item["username"] ?? '';
+      prefs.email = item["email"] ?? '';
+      prefs.phone = item["phone"] ?? '';
+      prefs.role = item["role"] ?? '';
+      prefs.profileImage = item["profileImage"] ?? '';
+      prefs.birthday = item["birthday"] ?? '';
+      prefs.age = item["age"] ?? 0;
+
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  static bool customLoginSaveData(KUser user) {
+    try {
+      final prefs = PreferenciasUsuario();
+
+      prefs
+        ..sessionToken = user.sessionToken
+        ..id = user.id
+        ..name = user.name
+        ..lastName = user.lastName
+        ..secondLastName = user.secondLastName ?? ''
+        ..verified = user.verified ?? false
+        ..userName = user.username
+        ..email = user.email
+        ..phone = user.phone ?? ''
+        ..role = user.role
+        ..profileImage = user.profileImage?.url ?? ''
+        ..birthday = user.birthday ?? ''
+        ..age = user.age ?? 0;
 
       return true;
     } catch (e) {

@@ -13,6 +13,7 @@ import 'package:kadesh/presentation/widgets/back_widget.dart';
 import 'package:kadesh/presentation/widgets/custombutton.dart';
 import 'package:kadesh/presentation/widgets/social_media_auth.dart';
 import 'package:kadesh/presentation/widgets/text_field.dart';
+
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../domain/controllers/auth_controller.dart';
@@ -82,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const LogoWidget(),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
@@ -279,7 +280,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return;
                               }
 
-                              final success = AuthController.login(authData);
+                              final success =
+                                  AuthController.loginSaveData(authData);
                               if (success) {
                                 if (context.mounted) {
                                   context.goNamed('home');

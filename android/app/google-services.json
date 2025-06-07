@@ -12,7 +12,20 @@
           "package_name": "com.kadesh.mc"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "224737492413-2h2osd144l3bg5ii16u33udcchcii70h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kadesh.mc",
+            "certificate_hash": "cb8ab63b3598206ba0be548c9e6ae5af0f0c8527"
+          }
+        },
+        {
+          "client_id": "224737492413-sq37dcdugi8cmdndlfsi8kmnfgc8an39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAX_plqG28-fnLV_Tt7GJoBef88fSE9pto"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224737492413-sq37dcdugi8cmdndlfsi8kmnfgc8an39.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "224737492413-8fkuncq1h3pr8tk2tjrb411scpevekoq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kadesh.mc"
+              }
+            }
+          ]
         }
       }
     }
