@@ -59,3 +59,5 @@ android/app/src/main/res/values/strings.xml
 .env.dev
 fingers.txt
 .env
+android/app/google-services.json
+ios/GoogleService-Info.plist
