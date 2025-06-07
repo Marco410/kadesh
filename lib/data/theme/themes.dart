@@ -6,8 +6,8 @@ import 'package:pet_app/data/theme/style.dart';
 class CustomThemes {
   static final ThemeData lightTheme = ThemeData(
       fontFamily: "Popins",
-      primaryColor: ColorsStyle.primaryColor,
-      splashColor: ColorsStyle.primaryColor,
+      primaryColor: ColorStyle.primaryColor,
+      splashColor: ColorStyle.primaryColor,
       chipTheme: const ChipThemeData(),
       useMaterial3: true,
       snackBarTheme: const SnackBarThemeData(),
@@ -16,14 +16,14 @@ class CustomThemes {
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(ColorsStyle.primaryColor),
+          foregroundColor: MaterialStateProperty.all(ColorStyle.primaryColor),
         ),
       ),
       textSelectionTheme: const TextSelectionThemeData());
 
   static final ThemeData darkTheme = ThemeData(
     fontFamily: "Popins",
-    primaryColor: ColorsStyle.primaryColor,
+    primaryColor: ColorStyle.primaryColor,
     splashColor: Colors.white,
     chipTheme: const ChipThemeData(),
     useMaterial3: true,

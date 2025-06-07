@@ -104,7 +104,7 @@ class OnbordingState extends State<Onbording> {
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                  color: ColorsStyle.primaryColor,
+                  color: ColorStyle.primaryColor,
                   borderRadius: BorderRadius.circular(20)),
               child: Icon(
                 currentIndex == contents.length - 1
@@ -164,20 +164,20 @@ class OnbordingState extends State<Onbording> {
                                       AssetImage(
                                           "assets/icons/${contents[i].icon}"),
                                       size: 120,
-                                      color: ColorsStyle.primaryColor),
+                                      color: ColorStyle.primaryColor),
                                   const SizedBox(height: 20),
                                   Text(
                                     contents[i].title,
                                     textAlign: TextAlign.center,
                                     style: TxtStyle.headerStyle.copyWith(
-                                        height: 0.7, color: ColorsStyle.white),
+                                        height: 0.7, color: ColorStyle.white),
                                   ),
                                   const SizedBox(height: 20),
                                   Text(contents[i].discription,
                                       textAlign: TextAlign.center,
                                       style: TxtStyle.descriptionStyle.copyWith(
                                           fontSize: 8.f,
-                                          color: ColorsStyle.white))
+                                          color: ColorStyle.white))
                                 ],
                               ),
                             ),
@@ -222,7 +222,7 @@ class OnbordingState extends State<Onbording> {
         margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: ColorsStyle.primaryColor,
+          color: ColorStyle.primaryColor,
         ),
       ),
     );

@@ -57,3 +57,4 @@ app.*.map.json
 ios/Podfile.lock
 android/app/src/main/res/values/strings.xml
 fingers.txt
+.env

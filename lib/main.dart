@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:pet_app/data/config/firebase_config.dart';
 import 'package:pet_app/data/routes/app_router.dart';
 import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
 import 'package:pet_app/domain/services/client_service.dart';
@@ -11,6 +14,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseConfig.platformOptions,
+  );
+
+  await dotenv.load(fileName: ".env");
+
   final prefs = PreferenciasUsuario();
   await prefs.initPrefs();
   runApp(ProviderScope(

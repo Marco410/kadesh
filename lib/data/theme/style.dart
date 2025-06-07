@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer_pro/sizer.dart';
 
-class ColorsStyle {
+class ColorStyle {
   static const primaryColor = Color(0xffF7945E);
   static const secondaryColor = Color(0xffA99286);
   static const thirdColor = Color(0xffF4DFD8);
@@ -20,6 +20,7 @@ class ColorsStyle {
   static const errorLight = Color(0xFFFFE5D5);
   static const white = Colors.white;
   static const background = Color(0xFFFFF9F2);
+  static const hintLightColor = Color(0xFFE0E0E0);
 }
 
 class TxtStyle {
@@ -27,26 +28,26 @@ class TxtStyle {
       fontFamily: "Dongle",
       fontSize: 25.f,
       fontWeight: FontWeight.w800,
-      color: ColorsStyle.dark,
+      color: ColorStyle.dark,
       height: 0.7,
       letterSpacing: 1.5);
 
   static final descriptionStyle = TextStyle(
       fontFamily: "Sans",
       fontSize: 6.f,
-      color: ColorsStyle.hintDarkColor,
+      color: ColorStyle.hintDarkColor,
       letterSpacing: 1.5,
       wordSpacing: 2,
       fontWeight: FontWeight.w400);
 
   static final labelStyle = TextStyle(
       fontFamily: "Dongle",
-      color: ColorsStyle.dark,
+      color: ColorStyle.dark,
       fontWeight: FontWeight.bold,
       fontSize: 10.f);
 
   static final hintText = TextStyle(
-      color: ColorsStyle.hintDarkColor,
+      color: ColorStyle.hintDarkColor,
       fontSize: 4.f,
       fontWeight: FontWeight.bold);
 }

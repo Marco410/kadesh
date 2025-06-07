@@ -8,7 +8,10 @@ class LogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ImageIcon(AssetImage("assets/logo.png"),
-        size: 120, color: ColorsStyle.primaryColor);
+    return const Hero(
+      tag: 'logo',
+      child: ImageIcon(AssetImage("assets/logo.png"),
+          size: 120, color: ColorStyle.primaryColor),
+    );
   }
 }

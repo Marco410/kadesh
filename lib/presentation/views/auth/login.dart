@@ -11,6 +11,7 @@ import 'package:pet_app/domain/providers/video_provider.dart';
 import 'package:pet_app/domain/services/notifications.dart';
 import 'package:pet_app/presentation/widgets/back_widget.dart';
 import 'package:pet_app/presentation/widgets/custombutton.dart';
+import 'package:pet_app/presentation/widgets/logo_widget.dart';
 import 'package:pet_app/presentation/widgets/social_media_auth.dart';
 import 'package:pet_app/presentation/widgets/text_field.dart';
 import 'package:sizer_pro/sizer.dart';
@@ -82,6 +83,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          const LogoWidget(),
                           Text(
                             "¡Bienvenido!",
                             style: TxtStyle.headerStyle
@@ -148,7 +150,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   return;
                                 }
 
-                                final success = AuthController.login(response);
+                                final success =
+                                    AuthController.loginSaveData(response);
 
                                 if (success) {
                                   context.goNamed('home');
@@ -193,7 +196,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             margin: const EdgeInsets.only(top: 5, bottom: 10),
                             onTap: () => context.goNamed('register'),
                             color: Colors.white,
-                            textColor: ColorsStyle.primaryColor,
+                            textColor: ColorStyle.primaryColor,
                             loading: false,
                           ),
                           Bounceable(

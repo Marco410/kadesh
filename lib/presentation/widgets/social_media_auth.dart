@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:pet_app/data/theme/style.dart';
+import 'package:pet_app/domain/providers/auth_provider.dart';
+import 'package:pet_app/presentation/widgets/loading_widget.dart';
 
-class SocialMediaAuth extends StatefulWidget {
+class SocialMediaAuth extends ConsumerStatefulWidget {
   final bool lineAtTop;
   const SocialMediaAuth({super.key, this.lineAtTop = true});
 
   @override
-  State<SocialMediaAuth> createState() => _SocialMediaAuthState();
+  ConsumerState<SocialMediaAuth> createState() => _SocialMediaAuthState();
 }
 
-class _SocialMediaAuthState extends State<SocialMediaAuth> {
+class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
+  bool loadingG = false;
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(googleAuthProvider);
     return Column(
       children: [
         (widget.lineAtTop)
@@ -25,7 +30,7 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: ColorStyle.hintColor,
                       height: 2,
                     ),
                   ),
@@ -33,11 +38,11 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: const Text(
                         "o",
-                        style: TextStyle(color: ColorsStyle.hintDarkColor),
+                        style: TextStyle(color: ColorStyle.hintDarkColor),
                       )),
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: ColorStyle.hintColor,
                       height: 2,
                     ),
                   ),
@@ -52,7 +57,7 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
               icon: 'facebook',
               iconColor: Colors.blue,
               onTap: () async {
-                print("Facebook login pressed");
+                /*  print("Facebook login pressed");
                 final LoginResult result = await FacebookAuth.instance.login();
                 print("result");
                 print(result);
@@ -61,13 +66,22 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                 } else {
                   print(result.status);
                   print(result.message);
-                }
+                } */
               },
             ),
             const SizedBox(width: 25),
-            const IconButtonWidget(
+            IconButtonWidget(
               icon: 'google',
               iconColor: Colors.redAccent,
+              loading: authState.isLoading,
+              onTap: () async {
+                final success = await ref
+                    .read(googleAuthProvider.notifier)
+                    .loginWithGoogle();
+                if (success && context.mounted) {
+                  context.goNamed('home');
+                }
+              },
             ),
           ],
         ),
@@ -79,7 +93,7 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: ColorStyle.hintColor,
                       height: 2,
                     ),
                   ),
@@ -87,11 +101,11 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: const Text(
                         "o",
-                        style: TextStyle(color: ColorsStyle.hintDarkColor),
+                        style: TextStyle(color: ColorStyle.hintDarkColor),
                       )),
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: ColorStyle.hintColor,
                       height: 2,
                     ),
                   ),
@@ -111,6 +125,7 @@ class IconButtonWidget extends StatelessWidget {
   final bool isDisabled;
   final Color iconColor;
   final double borderRadius;
+  final bool loading;
 
   const IconButtonWidget({
     super.key,
@@ -118,16 +133,19 @@ class IconButtonWidget extends StatelessWidget {
     this.borderRadius = 10,
     this.isDisabled = false,
     this.color = Colors.white,
-    this.iconColor = ColorsStyle.primaryColor,
+    this.iconColor = ColorStyle.primaryColor,
     required this.icon,
+    this.loading = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Bounceable(
-      onTap: () {
-        isDisabled ? null : onTap!() as void Function()?;
-        Haptics.vibrate(HapticsType.selection);
+      onTap: () async {
+        if (!isDisabled || onTap != null || !loading) {
+          await onTap!();
+          Haptics.vibrate(HapticsType.selection);
+        }
       },
       child: Container(
         padding: const EdgeInsets.all(15),
@@ -135,8 +153,10 @@ class IconButtonWidget extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(borderRadius),
             boxShadow: ShadowStyle.generalShadow),
-        child: SvgPicture.asset("assets/icons/$icon.svg",
-            height: 23, color: iconColor),
+        child: (loading)
+            ? LoadingStandardWidget.loadingWidget(25)
+            : SvgPicture.asset("assets/icons/$icon.svg",
+                height: 23, color: iconColor),
       ),
     );
   }

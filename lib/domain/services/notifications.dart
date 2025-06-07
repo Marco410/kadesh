@@ -21,7 +21,7 @@ class ToastUI {
       description: Text(
         msg,
         style: TxtStyle.labelStyle.copyWith(
-            color: ColorsStyle.dark,
+            color: ColorStyle.dark,
             fontSize: 11.f,
             height: 0.7,
             fontWeight: FontWeight.normal),
@@ -38,17 +38,17 @@ class ToastUI {
       },
       icon: const Icon(
         Icons.check_circle_outline_outlined,
-        color: ColorsStyle.success,
+        color: ColorStyle.success,
       ),
       showIcon: true,
-      primaryColor: ColorsStyle.successLight,
+      primaryColor: ColorStyle.successLight,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       borderRadius: BorderRadius.circular(15),
       boxShadow: ShadowStyle.generalShadow,
       showProgressBar: true,
       progressBarTheme: const ProgressIndicatorThemeData(
-        color: ColorsStyle.success,
+        color: ColorStyle.success,
       ),
       closeButtonShowType: CloseButtonShowType.always,
       closeOnClick: false,
@@ -70,7 +70,7 @@ class ToastUI {
       description: Text(
         msg,
         style: TxtStyle.labelStyle.copyWith(
-            color: ColorsStyle.dark,
+            color: ColorStyle.dark,
             fontSize: 11.f,
             height: 0.7,
             fontWeight: FontWeight.normal),
@@ -87,17 +87,17 @@ class ToastUI {
       },
       icon: const Icon(
         Icons.bug_report_rounded,
-        color: ColorsStyle.error,
+        color: ColorStyle.error,
       ),
       showIcon: true,
-      primaryColor: ColorsStyle.errorLight,
+      primaryColor: ColorStyle.errorLight,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       borderRadius: BorderRadius.circular(15),
       boxShadow: ShadowStyle.generalShadow,
       showProgressBar: true,
       progressBarTheme: const ProgressIndicatorThemeData(
-        color: ColorsStyle.error,
+        color: ColorStyle.error,
       ),
       closeButtonShowType: CloseButtonShowType.always,
       closeOnClick: false,
@@ -119,7 +119,7 @@ class ToastUI {
       description: Text(
         msg,
         style: TxtStyle.labelStyle.copyWith(
-            color: ColorsStyle.dark,
+            color: ColorStyle.dark,
             fontSize: 11.f,
             height: 0.7,
             fontWeight: FontWeight.normal),
@@ -136,17 +136,17 @@ class ToastUI {
       },
       icon: const Icon(
         Icons.info_outline_rounded,
-        color: ColorsStyle.blue,
+        color: ColorStyle.blue,
       ),
       showIcon: true,
-      primaryColor: ColorsStyle.blueLight,
+      primaryColor: ColorStyle.blueLight,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       borderRadius: BorderRadius.circular(15),
       boxShadow: ShadowStyle.generalShadow,
       showProgressBar: true,
       progressBarTheme: const ProgressIndicatorThemeData(
-        color: ColorsStyle.blue,
+        color: ColorStyle.blue,
       ),
       closeButtonShowType: CloseButtonShowType.always,
       closeOnClick: false,
@@ -163,12 +163,12 @@ class ToastUI {
       title: Text(
         '¡Alerta!',
         style: TxtStyle.labelStyle
-            .copyWith(color: ColorsStyle.warning, fontSize: 12.f, height: 0.5),
+            .copyWith(color: ColorStyle.warning, fontSize: 12.f, height: 0.5),
       ),
       description: Text(
         msg,
         style: TxtStyle.labelStyle.copyWith(
-            color: ColorsStyle.dark,
+            color: ColorStyle.dark,
             fontSize: 11.f,
             height: 0.7,
             fontWeight: FontWeight.normal),
@@ -185,17 +185,17 @@ class ToastUI {
       },
       icon: const Icon(
         Icons.warning_amber_rounded,
-        color: ColorsStyle.warning,
+        color: ColorStyle.warning,
       ),
       showIcon: true,
-      primaryColor: ColorsStyle.warningLight,
+      primaryColor: ColorStyle.warningLight,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       borderRadius: BorderRadius.circular(15),
       boxShadow: ShadowStyle.generalShadow,
       showProgressBar: true,
       progressBarTheme: const ProgressIndicatorThemeData(
-        color: ColorsStyle.warning,
+        color: ColorStyle.warning,
       ),
       closeButtonShowType: CloseButtonShowType.always,
       closeOnClick: false,

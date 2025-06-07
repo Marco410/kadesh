@@ -70,7 +70,7 @@ class CustomButton extends StatelessWidget {
                             strokeWidth: 3,
                             color:
                                 ((color ?? theme.primaryColor) == Colors.white)
-                                    ? ColorsStyle.secondaryColor
+                                    ? ColorStyle.secondaryColor
                                     : Colors.white,
                           ),
                         )

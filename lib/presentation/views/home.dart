@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: const Text("Home")),
             Text(prefs.userName),
             Text(prefs.email),
+            Text(prefs.id),
           ],
         ),
       ),
