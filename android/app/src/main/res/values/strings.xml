@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id"></string>
-    <string name="facebook_client_token"></string>
+    <string name="app_name">Kadesh</string>
+    <string name="facebook_app_id">714947337823080</string>
+    <string name="fb_login_protocol_scheme">fb714947337823080</string>
+    <string name="facebook_client_token">04cb11402ab76fc224f315dcc9c34d01</string>
 </resources>

@@ -21,6 +21,7 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(googleAuthProvider);
+    final authStateFb = ref.watch(facebookAuthProvider);
     return Column(
       children: [
         (widget.lineAtTop)
@@ -56,17 +57,14 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
             IconButtonWidget(
               icon: 'facebook',
               iconColor: Colors.blue,
+              loading: authStateFb.isLoading,
               onTap: () async {
-                /*  print("Facebook login pressed");
-                final LoginResult result = await FacebookAuth.instance.login();
-                print("result");
-                print(result);
-                if (result.status == LoginStatus.success) {
-                  final AccessToken accessToken = result.accessToken!;
-                } else {
-                  print(result.status);
-                  print(result.message);
-                } */
+                final success = await ref
+                    .read(facebookAuthProvider.notifier)
+                    .loginWithFacebook();
+                if (success && context.mounted) {
+                  context.goNamed('home');
+                }
               },
             ),
             const SizedBox(width: 25),
