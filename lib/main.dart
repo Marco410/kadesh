@@ -15,11 +15,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
+
   await Firebase.initializeApp(
     options: DefaultFirebaseConfig.platformOptions,
   );
-
-  await dotenv.load(fileName: ".env");
 
   final prefs = PreferenciasUsuario();
   await prefs.initPrefs();

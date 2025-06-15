@@ -63,17 +63,7 @@ class CustomButton extends StatelessWidget {
                   icon ?? const SizedBox(),
                   if (icon != null) const SizedBox(width: 10),
                   (loading)
-                      ? SizedBox(
-                          height: 25,
-                          width: 25,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 3,
-                            color:
-                                ((color ?? theme.primaryColor) == Colors.white)
-                                    ? KColors.secondaryColor
-                                    : Colors.white,
-                          ),
-                        )
+                      ? LoadingStandardWidget.loadingWidget(20, Colors.white)
                       : Text(
                           text!,
                           style: TextStyle(
