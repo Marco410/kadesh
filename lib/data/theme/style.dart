@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer_pro/sizer.dart';
 
-class ColorsStyle {
+class KColors {
   static const primaryColor = Color(0xffF7945E);
   static const secondaryColor = Color(0xffA99286);
   static const thirdColor = Color(0xffF4DFD8);
@@ -19,7 +19,7 @@ class ColorsStyle {
   static const error = Color(0xFFFF3A30);
   static const errorLight = Color(0xFFFFE5D5);
   static const white = Colors.white;
-  static const background = Color(0xFFFFF9F2);
+  static const background = Color(0xFFF4F6F8);
 }
 
 class TxtStyle {
@@ -27,28 +27,26 @@ class TxtStyle {
       fontFamily: "Dongle",
       fontSize: 25.f,
       fontWeight: FontWeight.w800,
-      color: ColorsStyle.dark,
+      color: KColors.dark,
       height: 0.7,
       letterSpacing: 1.5);
 
   static final descriptionStyle = TextStyle(
       fontFamily: "Sans",
       fontSize: 6.f,
-      color: ColorsStyle.hintDarkColor,
+      color: KColors.hintDarkColor,
       letterSpacing: 1.5,
       wordSpacing: 2,
       fontWeight: FontWeight.w400);
 
   static final labelStyle = TextStyle(
       fontFamily: "Dongle",
-      color: ColorsStyle.dark,
+      color: KColors.dark,
       fontWeight: FontWeight.bold,
       fontSize: 10.f);
 
   static final hintText = TextStyle(
-      color: ColorsStyle.hintDarkColor,
-      fontSize: 4.f,
-      fontWeight: FontWeight.bold);
+      color: KColors.hintDarkColor, fontSize: 4.f, fontWeight: FontWeight.bold);
 }
 
 class ShadowStyle {
@@ -76,5 +74,13 @@ class ShadowStyle {
         blurRadius: 4,
         spreadRadius: 0,
         offset: const Offset(0, 0))
+  ];
+
+  static List<BoxShadow> containerShadow2 = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.05),
+      blurRadius: 10,
+      offset: const Offset(0, 4),
+    ),
   ];
 }
