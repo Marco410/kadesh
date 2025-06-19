@@ -105,6 +105,11 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
                     child: Container(
                       color: KColors.hintColor,
                       height: 2,
+                      )),
+                  Expanded(
+                    child: Container(
+                      color: KColors.hintColor,
+                      height: 2,
                     ),
                   ),
                 ],

@@ -4,7 +4,7 @@ import 'package:kadesh/data/theme/style.dart';
 final ThemeData appTheme = ThemeData(
   fontFamily: 'Poppins',
   scaffoldBackgroundColor: Colors.white,
-  primaryColor: ColorStyle.primaryColor,
+  primaryColor: KColors.primaryColor,
   hintColor: Colors.black45,
   dividerColor: Colors.black,
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

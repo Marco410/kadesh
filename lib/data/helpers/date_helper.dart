@@ -15,8 +15,8 @@ class DateHelper {
           return Theme(
             data: Theme.of(context).copyWith(
               colorScheme: const ColorScheme.light(
-                primary: ColorStyle.primaryColor,
-                onPrimary: ColorStyle.white,
+                primary: KColors.primaryColor,
+                onPrimary: KColors.white,
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
