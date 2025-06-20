@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           DotNavigationBarItem(
             icon: const HugeIcon(
-                icon: HugeIcons.strokeRoundedMapPinpoint02,
+                icon: HugeIcons.strokeRoundedMapsLocation01,
                 color: KColors.dark,
                 size: 24),
           ),
@@ -62,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           DotNavigationBarItem(
             icon: const HugeIcon(
-                icon: HugeIcons.strokeRoundedCash01,
+                icon: HugeIcons.strokeRoundedStore04,
                 color: KColors.dark,
                 size: 24),
           ),
           DotNavigationBarItem(
             icon: const HugeIcon(
-                icon: HugeIcons.strokeRoundedInformationCircle,
+                icon: HugeIcons.strokeRoundedCash01,
                 color: KColors.dark,
                 size: 24),
           ),
