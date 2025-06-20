@@ -13,6 +13,24 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+// Cargar variables de entorno desde .env (producción)
+def envProperties = new Properties()
+def envFile = rootProject.file("../.env")
+if (envFile.exists()) {
+    envFile.withReader("UTF-8") { reader ->
+        envProperties.load(reader)
+    }
+}
+
+// Cargar variables de entorno desde .env.dev (desarrollo)
+def envDevProperties = new Properties()
+def envDevFile = rootProject.file("../.env.dev")
+if (envDevFile.exists()) {
+    envDevFile.withReader("UTF-8") { reader ->
+        envDevProperties.load(reader)
+    }
+}
+
 def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
 if (flutterVersionCode == null) {
     flutterVersionCode = "1"
@@ -22,6 +40,11 @@ def flutterVersionName = localProperties.getProperty("flutter.versionName")
 if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
+
+// API keys por flavor
+def googleMapsApiKey = envProperties.getProperty("GOOGLE_MAPS_API_KEY") ?: System.getenv("GOOGLE_MAPS_API_KEY") ?: localProperties.getProperty("GOOGLE_MAPS_API_KEY") ?: ""
+def googleMapsApiKeyDev = envDevProperties.getProperty("GOOGLE_MAPS_API_KEY") ?: System.getenv("GOOGLE_MAPS_API_KEY") ?: localProperties.getProperty("GOOGLE_MAPS_API_KEY") ?: ""
+
 
 android {
     namespace = "com.kadesh.mc"
@@ -60,11 +83,17 @@ android {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
             resValue "string", "app_name", "Kadesh Dev"
+            manifestPlaceholders = [
+                GOOGLE_MAPS_API_KEY: googleMapsApiKeyDev
+            ]
         }
 
         prod {
             dimension = "app"
             resValue "string", "app_name", "Kadesh"
+            manifestPlaceholders = [
+                GOOGLE_MAPS_API_KEY: googleMapsApiKey
+            ]
         }
     }
 }
