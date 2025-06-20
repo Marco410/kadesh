@@ -19,6 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KColors.background,
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       appBar: const KAppBar(),
       body: _pageSelected(_selectedIndex),
       bottomNavigationBar: DotNavigationBar(
