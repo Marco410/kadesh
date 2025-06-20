@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({
@@ -11,7 +11,7 @@ class LogoWidget extends StatelessWidget {
     return const Hero(
       tag: 'logo',
       child: ImageIcon(AssetImage("assets/logo.png"),
-          size: 120, color: ColorStyle.primaryColor),
+          size: 120, color: KColors.primaryColor),
     );
   }
 }

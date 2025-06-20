@@ -11,6 +11,7 @@ import 'package:kadesh/domain/queries/auth.dart';
 import 'package:kadesh/domain/services/notifications.dart';
 import 'package:kadesh/presentation/widgets/back_widget.dart';
 import 'package:kadesh/presentation/widgets/custombutton.dart';
+import 'package:kadesh/presentation/widgets/logo_widget.dart';
 import 'package:kadesh/presentation/widgets/social_media_auth.dart';
 import 'package:kadesh/presentation/widgets/text_field.dart';
 import 'package:sizer_pro/sizer.dart';

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
-import 'package:kadesh/data/theme/style.dart';
 import 'package:kadesh/presentation/widgets/logo_widget.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {

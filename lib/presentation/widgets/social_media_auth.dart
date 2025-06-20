@@ -73,6 +73,7 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
               iconColor: Colors.redAccent,
               loading: authState.isLoading,
               onTap: () async {
+                print('google');
                 final success = await ref
                     .read(googleAuthProvider.notifier)
                     .loginWithGoogle();
@@ -102,10 +103,10 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
                         style: TextStyle(color: KColors.hintDarkColor),
                       )),
                   Expanded(
-                    child: Container(
-                      color: KColors.hintColor,
-                      height: 2,
-                      )),
+                      child: Container(
+                    color: KColors.hintColor,
+                    height: 2,
+                  )),
                   Expanded(
                     child: Container(
                       color: KColors.hintColor,
@@ -124,7 +125,7 @@ class _SocialMediaAuthState extends ConsumerState<SocialMediaAuth> {
 class IconButtonWidget extends StatelessWidget {
   final Color color;
   final String icon;
-  final Function()? onTap;
+  final VoidCallback? onTap;
   final bool isDisabled;
   final Color iconColor;
   final double borderRadius;
@@ -146,7 +147,7 @@ class IconButtonWidget extends StatelessWidget {
     return Bounceable(
       onTap: () async {
         if (!isDisabled || onTap != null || !loading) {
-          await onTap!();
+          onTap!();
           Haptics.vibrate(HapticsType.selection);
         }
       },
