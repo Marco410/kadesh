@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import 'package:kadesh/data/routes/app_router.dart';
 import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
 import 'package:kadesh/data/theme/theme_style.dart';
@@ -16,6 +18,11 @@ Future<void> mainCommon({required Flavor flavor, required String name}) async {
   FlavorConfigOptions(flavor: flavor, name: name);
 
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseConfig.platformOptions,
+  );
+
   final prefs = PreferenciasUsuario();
   await prefs.initPrefs();
 
@@ -24,10 +31,6 @@ Future<void> mainCommon({required Flavor flavor, required String name}) async {
     color: FlavorConfigOptions.isDev() ? Colors.red : Colors.blue,
     location: BannerLocation.topStart,
     variables: {},
-  );
-
-   await Firebase.initializeApp(
-    options: DefaultFirebaseConfig.platformOptions,
   );
 
   await dotenv.load(
