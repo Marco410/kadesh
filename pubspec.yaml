@@ -1,4 +1,4 @@
-name: pet_app
+name: kadesh
 description: "A new Flutter project."
 publish_to: "none"
 
@@ -29,6 +29,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   video_player: ^2.9.5
+  dot_navigation_bar: ^1.0.2
+  hugeicons: ^0.0.11
+  lottie: ^3.3.1
+  #google_maps_flutter: ^2.12.3
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +47,7 @@ flutter:
     - assets/
     - assets/backs/
     - assets/icons/
+    - assets/icons/animation/
     - assets/images/
     - assets/video/
 

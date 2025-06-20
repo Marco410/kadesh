@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 import 'package:intl/intl.dart';
 
 class DateHelper {
@@ -15,8 +15,8 @@ class DateHelper {
           return Theme(
             data: Theme.of(context).copyWith(
               colorScheme: const ColorScheme.light(
-                primary: ColorsStyle.primaryColor,
-                onPrimary: ColorsStyle.white,
+                primary: KColors.primaryColor,
+                onPrimary: KColors.white,
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:pet_app/data/routes/app_router.dart';
-import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
-import 'package:pet_app/domain/services/client_service.dart';
-import 'package:pet_app/data/theme/theme_style.dart';
+import 'package:kadesh/data/routes/app_router.dart';
+import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
+import 'package:kadesh/domain/services/client_service.dart';
+import 'package:kadesh/data/theme/theme_style.dart';
 import 'package:sizer_pro/sizer.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

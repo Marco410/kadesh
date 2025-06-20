@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kadesh/data/theme/style.dart';
+import 'package:kadesh/presentation/widgets/custombutton.dart';
+import 'package:lottie/lottie.dart';
+import 'package:sizer_pro/sizer.dart';
 
 class ErrorScreen extends StatefulWidget {
   final GoException? error;
@@ -18,20 +22,21 @@ class _ErrorScreenState extends State<ErrorScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             "Página no encontrada",
             textAlign: TextAlign.center,
+            style: TxtStyle.headerStyle,
           ),
+          Lottie.asset("assets/icons/animation/not-found.json", height: 25.h),
           const SizedBox(
             height: 60,
           ),
           Text(widget.error!.message.toString()),
-
-          /*  CustomButton(
-              margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 60),
+          CustomButton(
+              margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
               text: "Ir al inicio",
-              onTap: () => context.go("/"),
-              loading: false) */
+              onTap: () => context.goNamed("home"),
+              loading: false)
         ],
       ),
     );

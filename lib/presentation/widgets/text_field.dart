@@ -3,7 +3,7 @@
 import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -34,7 +34,7 @@ class TextFieldWidget extends StatelessWidget {
       this.formatters,
       this.suffixText,
       this.isVisible = true,
-      this.labelColor = ColorsStyle.dark,
+      this.labelColor = KColors.dark,
       this.border = true,
       this.suffixIcon,
       this.margin,
@@ -138,16 +138,16 @@ class TextFieldWidget extends StatelessWidget {
                   border: border
                       ? Border.all(
                           color: (formField.hasError || hasError)
-                              ? ColorsStyle.error
-                              : ColorsStyle.hintColor)
+                              ? KColors.error
+                              : KColors.hintColor)
                       : Border.all(color: Colors.transparent),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     (!border)
                         ? BoxShadow(
                             color: (formField.hasError || hasError)
-                                ? ColorsStyle.error.withOpacity(0.7)
-                                : ColorsStyle.dark.withOpacity(0.3),
+                                ? KColors.error.withOpacity(0.7)
+                                : KColors.dark.withOpacity(0.3),
                             blurRadius: 15,
                             spreadRadius: -5,
                             offset: const Offset(2, 4))
@@ -163,9 +163,9 @@ class TextFieldWidget extends StatelessWidget {
                   style: TextStyle(
                       color: (readOnly!)
                           ? (textInputType == TextInputType.datetime)
-                              ? ColorsStyle.dark
+                              ? KColors.dark
                               : Colors.grey
-                          : ColorsStyle.dark,
+                          : KColors.dark,
                       fontSize: 7.f),
                   onTap: onTap as void Function()?,
                   maxLines: lines ?? 1,
@@ -185,7 +185,7 @@ class TextFieldWidget extends StatelessWidget {
                       enabledBorder: InputBorder.none,
                       suffixText: suffixText,
                       suffixStyle: TxtStyle.hintText.copyWith(
-                          color: ColorsStyle.primaryColor, fontSize: 4.5.sp),
+                          color: KColors.primaryColor, fontSize: 4.5.sp),
                       suffixIcon: suffixIcon,
                       focusColor: Colors.black),
                 ),

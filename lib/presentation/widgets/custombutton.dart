@@ -4,7 +4,7 @@ import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class CustomButton extends StatelessWidget {
@@ -70,7 +70,7 @@ class CustomButton extends StatelessWidget {
                             strokeWidth: 3,
                             color:
                                 ((color ?? theme.primaryColor) == Colors.white)
-                                    ? ColorsStyle.secondaryColor
+                                    ? KColors.secondaryColor
                                     : Colors.white,
                           ),
                         )

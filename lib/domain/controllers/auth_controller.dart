@@ -1,4 +1,4 @@
-import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
+import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
 
 class AuthController {
   static bool login(dynamic data) {

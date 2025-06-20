@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 
 class SocialMediaAuth extends StatefulWidget {
   final bool lineAtTop;
@@ -24,7 +24,7 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: KColors.hintColor,
                       height: 2,
                     ),
                   ),
@@ -32,11 +32,11 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: const Text(
                         "o",
-                        style: TextStyle(color: ColorsStyle.hintDarkColor),
+                        style: TextStyle(color: KColors.hintDarkColor),
                       )),
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: KColors.hintColor,
                       height: 2,
                     ),
                   ),
@@ -66,7 +66,7 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: KColors.hintColor,
                       height: 2,
                     ),
                   ),
@@ -74,11 +74,11 @@ class _SocialMediaAuthState extends State<SocialMediaAuth> {
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: const Text(
                         "o",
-                        style: TextStyle(color: ColorsStyle.hintDarkColor),
+                        style: TextStyle(color: KColors.hintDarkColor),
                       )),
                   Expanded(
                     child: Container(
-                      color: ColorsStyle.hintColor,
+                      color: KColors.hintColor,
                       height: 2,
                     ),
                   ),
@@ -105,7 +105,7 @@ class IconButtonWidget extends StatelessWidget {
     this.borderRadius = 10,
     this.isDisabled = false,
     this.color = Colors.white,
-    this.iconColor = ColorsStyle.primaryColor,
+    this.iconColor = KColors.primaryColor,
     required this.icon,
   });
 

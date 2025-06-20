@@ -2,8 +2,8 @@ import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_app/data/share_prefs/prefs_usuario.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/share_prefs/prefs_usuario.dart';
+import 'package:kadesh/data/theme/style.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class Onbording extends StatefulWidget {
@@ -104,7 +104,7 @@ class OnbordingState extends State<Onbording> {
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                  color: ColorsStyle.primaryColor,
+                  color: KColors.primaryColor,
                   borderRadius: BorderRadius.circular(20)),
               child: Icon(
                 currentIndex == contents.length - 1
@@ -164,20 +164,19 @@ class OnbordingState extends State<Onbording> {
                                       AssetImage(
                                           "assets/icons/${contents[i].icon}"),
                                       size: 120,
-                                      color: ColorsStyle.primaryColor),
+                                      color: KColors.primaryColor),
                                   const SizedBox(height: 20),
                                   Text(
                                     contents[i].title,
                                     textAlign: TextAlign.center,
                                     style: TxtStyle.headerStyle.copyWith(
-                                        height: 0.7, color: ColorsStyle.white),
+                                        height: 0.7, color: KColors.white),
                                   ),
                                   const SizedBox(height: 20),
                                   Text(contents[i].discription,
                                       textAlign: TextAlign.center,
                                       style: TxtStyle.descriptionStyle.copyWith(
-                                          fontSize: 8.f,
-                                          color: ColorsStyle.white))
+                                          fontSize: 8.f, color: KColors.white))
                                 ],
                               ),
                             ),
@@ -222,7 +221,7 @@ class OnbordingState extends State<Onbording> {
         margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: ColorsStyle.primaryColor,
+          color: KColors.primaryColor,
         ),
       ),
     );

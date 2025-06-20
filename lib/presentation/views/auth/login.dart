@@ -3,16 +3,16 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:pet_app/data/helpers/handle_errors.dart';
-import 'package:pet_app/data/theme/style.dart';
-import 'package:pet_app/domain/controllers/auth_controller.dart';
-import 'package:pet_app/domain/mutations/auth.dart';
-import 'package:pet_app/domain/providers/video_provider.dart';
-import 'package:pet_app/domain/services/notifications.dart';
-import 'package:pet_app/presentation/widgets/back_widget.dart';
-import 'package:pet_app/presentation/widgets/custombutton.dart';
-import 'package:pet_app/presentation/widgets/social_media_auth.dart';
-import 'package:pet_app/presentation/widgets/text_field.dart';
+import 'package:kadesh/data/helpers/handle_errors.dart';
+import 'package:kadesh/data/theme/style.dart';
+import 'package:kadesh/domain/controllers/auth_controller.dart';
+import 'package:kadesh/domain/mutations/auth.dart';
+import 'package:kadesh/domain/providers/video_provider.dart';
+import 'package:kadesh/domain/services/notifications.dart';
+import 'package:kadesh/presentation/widgets/back_widget.dart';
+import 'package:kadesh/presentation/widgets/custombutton.dart';
+import 'package:kadesh/presentation/widgets/social_media_auth.dart';
+import 'package:kadesh/presentation/widgets/text_field.dart';
 import 'package:sizer_pro/sizer.dart';
 import 'package:video_player/video_player.dart';
 
@@ -193,7 +193,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             margin: const EdgeInsets.only(top: 5, bottom: 10),
                             onTap: () => context.goNamed('register'),
                             color: Colors.white,
-                            textColor: ColorsStyle.primaryColor,
+                            textColor: KColors.primaryColor,
                             loading: false,
                           ),
                           Bounceable(

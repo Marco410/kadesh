@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:pet_app/data/helpers/handle_errors.dart';
-import 'package:pet_app/data/theme/style.dart';
-import 'package:pet_app/domain/mutations/auth.dart';
-import 'package:pet_app/domain/queries/auth.dart';
-import 'package:pet_app/domain/services/notifications.dart';
-import 'package:pet_app/presentation/widgets/back_widget.dart';
-import 'package:pet_app/presentation/widgets/custombutton.dart';
-import 'package:pet_app/presentation/widgets/social_media_auth.dart';
-import 'package:pet_app/presentation/widgets/text_field.dart';
+import 'package:kadesh/data/helpers/handle_errors.dart';
+import 'package:kadesh/data/theme/style.dart';
+import 'package:kadesh/domain/mutations/auth.dart';
+import 'package:kadesh/domain/queries/auth.dart';
+import 'package:kadesh/domain/services/notifications.dart';
+import 'package:kadesh/presentation/widgets/back_widget.dart';
+import 'package:kadesh/presentation/widgets/custombutton.dart';
+import 'package:kadesh/presentation/widgets/social_media_auth.dart';
+import 'package:kadesh/presentation/widgets/text_field.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../domain/controllers/auth_controller.dart';
@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     final client = GraphQLProvider.of(context).value;
     return Scaffold(
-      backgroundColor: ColorsStyle.background,
+      backgroundColor: KColors.background,
       extendBodyBehindAppBar: false,
       body: GestureDetector(
         onTap: () {
@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 borderRadius: BorderRadius.circular(8)),
                             child: IconButton(
                                 icon: const Icon(Icons.arrow_back_rounded,
-                                    color: ColorsStyle.primaryColor, size: 26),
+                                    color: KColors.primaryColor, size: 26),
                                 onPressed: () => context.pop()),
                           ),
                         ],
@@ -194,7 +194,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         suffixIcon: IconButton(
                           icon: const Icon(
                             Icons.calendar_month_rounded,
-                            color: ColorsStyle.secondaryColor,
+                            color: KColors.secondaryColor,
                           ),
                           onPressed: () async {
                             final res = await DateHelper.selectDate(context);

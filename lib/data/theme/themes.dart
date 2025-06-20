@@ -1,13 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/Material.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 
 class CustomThemes {
   static final ThemeData lightTheme = ThemeData(
       fontFamily: "Popins",
-      primaryColor: ColorsStyle.primaryColor,
-      splashColor: ColorsStyle.primaryColor,
+      primaryColor: KColors.primaryColor,
+      splashColor: KColors.primaryColor,
       chipTheme: const ChipThemeData(),
       useMaterial3: true,
       snackBarTheme: const SnackBarThemeData(),
@@ -16,14 +16,14 @@ class CustomThemes {
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(ColorsStyle.primaryColor),
+          foregroundColor: MaterialStateProperty.all(KColors.primaryColor),
         ),
       ),
       textSelectionTheme: const TextSelectionThemeData());
 
   static final ThemeData darkTheme = ThemeData(
     fontFamily: "Popins",
-    primaryColor: ColorsStyle.primaryColor,
+    primaryColor: KColors.primaryColor,
     splashColor: Colors.white,
     chipTheme: const ChipThemeData(),
     useMaterial3: true,
