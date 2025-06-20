@@ -88,5 +88,7 @@
 	<string>fbshareextension</string>
 	</array>
 	<!-- End of the FB Sign-in Section -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necesitamos acceder a tu ubicación para mostrar los puntos de interés en el mapa.</string>
 </dict>
 </plist>

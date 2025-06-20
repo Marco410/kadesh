@@ -37,11 +37,7 @@ class KAppBar extends ConsumerWidget implements PreferredSizeWidget {
       actions: [
         IconButtonWidget(
           onTap: () {},
-          icon: HugeIcon(
-            icon: HugeIcons.strokeRoundedNotification01,
-            color: KColors.dark,
-            size: 12.f,
-          ),
+          icon: HugeIcons.strokeRoundedNotification01,
         ),
       ],
       actionsPadding: const EdgeInsets.only(right: 15),

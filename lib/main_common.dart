@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -37,11 +40,21 @@ Future<void> mainCommon({required Flavor flavor, required String name}) async {
     variables: {},
   );
 
+  if (Platform.isIOS) {
+    setGoogleMapsKeyForiOS();
+  }
+
   runApp(ProviderScope(
     child: MyApp(
       client: await ClientGraphQL.getClient(),
     ),
   ));
+}
+
+void setGoogleMapsKeyForiOS() {
+  const channel = MethodChannel('com.kadesh.env');
+  channel
+      .invokeMethod('setApiKey', {'apiKey': dotenv.env['GOOGLE_MAPS_API_KEY']});
 }
 
 class MyApp extends ConsumerStatefulWidget {
