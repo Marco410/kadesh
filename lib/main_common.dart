@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,11 +13,15 @@ import 'package:kadesh/domain/services/client_service.dart';
 import 'package:kadesh/flavors/flavor_config.dart';
 import 'package:sizer_pro/sizer.dart';
 import 'package:toastification/toastification.dart';
+import 'package:kadesh/data/config/firebase_config.dart';
 
 Future<void> mainCommon({required Flavor flavor, required String name}) async {
   FlavorConfigOptions(flavor: flavor, name: name);
 
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(
+      fileName: FlavorConfigOptions.isDev() ? ".env.dev" : ".env");
 
   await Firebase.initializeApp(
     options: DefaultFirebaseConfig.platformOptions,
@@ -32,9 +36,6 @@ Future<void> mainCommon({required Flavor flavor, required String name}) async {
     location: BannerLocation.topStart,
     variables: {},
   );
-
-  await dotenv.load(
-      fileName: FlavorConfigOptions.isDev() ? ".env.dev" : ".env");
 
   runApp(ProviderScope(
     child: MyApp(

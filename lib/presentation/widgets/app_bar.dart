@@ -64,6 +64,10 @@ class UserAvatarWidget extends StatelessWidget {
         color: KColors.secondaryColor,
         shape: BoxShape.circle,
       ),
+      child: const HugeIcon(
+        icon: HugeIcons.strokeRoundedUser,
+        color: KColors.white,
+      ),
     );
   }
 }

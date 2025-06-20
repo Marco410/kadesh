@@ -21,7 +21,6 @@ class KColors {
   static const white = Colors.white;
   static const background = Color(0xFFF4F6F8);
   static const hintLightColor = Color(0xFFE0E0E0);
-  static const background = Color(0xFFF4F6F8);
 }
 
 class TxtStyle {

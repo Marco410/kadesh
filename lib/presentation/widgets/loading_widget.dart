@@ -1,7 +1,7 @@
 import 'package:flutter/Material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
-import 'package:pet_app/data/theme/style.dart';
+import 'package:kadesh/data/theme/style.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer_pro/sizer.dart';
 
@@ -9,7 +9,7 @@ class LoadingStandardWidget {
   static Widget loadingWidget([double? size, Color? color]) {
     return Center(
       child: LoadingAnimationWidget.threeRotatingDots(
-        color: color ?? ColorStyle.primaryColor,
+        color: color ?? KColors.primaryColor,
         size: size ?? 40,
       ),
     );
@@ -27,7 +27,7 @@ class LoadingStandardWidget {
         const Text(
           "No se encontraron resultados.",
           style: TextStyle(
-              color: ColorStyle.primaryColor, fontWeight: FontWeight.bold),
+              color: KColors.primaryColor, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -46,7 +46,7 @@ class LoadingStandardWidget {
           "No hay $type en este momento.",
           textAlign: TextAlign.center,
           style: const TextStyle(
-              color: ColorStyle.primaryColor,
+              color: KColors.primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 18),
         ),
@@ -95,8 +95,8 @@ class LoadingStandardWidget {
                 alignment: Alignment.center,
                 children: [
                   Shimmer.fromColors(
-                    baseColor: ColorStyle.hintColor,
-                    highlightColor: ColorStyle.hintLightColor,
+                    baseColor: KColors.hintColor,
+                    highlightColor: KColors.hintLightColor,
                     child: Container(
                       height: size?.h ?? 25.h,
                       decoration: BoxDecoration(
@@ -107,7 +107,7 @@ class LoadingStandardWidget {
                   icon != null
                       ? Icon(
                           icon,
-                          color: ColorStyle.hintLightColor,
+                          color: KColors.hintLightColor,
                           size: (size?.h ?? 25.h) / 4,
                         )
                       : const SizedBox(),

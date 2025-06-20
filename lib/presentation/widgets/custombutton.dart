@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:kadesh/data/theme/style.dart';
+import 'package:kadesh/presentation/widgets/loading_widget.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class CustomButton extends StatelessWidget {

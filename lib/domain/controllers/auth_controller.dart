@@ -20,7 +20,7 @@ class AuthController {
       prefs.role = item["role"] ?? '';
       prefs.profileImage = item["profileImage"] ?? '';
       prefs.birthday = item["birthday"] ?? '';
-      prefs.age = item["age"] ?? 0;
+      prefs.age = int.tryParse(item["age"] ?? '0') ?? 0;
 
       return true;
     } catch (e) {
@@ -45,7 +45,7 @@ class AuthController {
         ..role = user.role
         ..profileImage = user.profileImage?.url ?? ''
         ..birthday = user.birthday ?? ''
-        ..age = user.age ?? 0;
+        ..age = int.tryParse(user.age.toString()) ?? 0;
 
       return true;
     } catch (e) {

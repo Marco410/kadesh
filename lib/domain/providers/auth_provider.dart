@@ -1,6 +1,6 @@
 // auth_notifier.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pet_app/domain/services/notifications.dart';
+import 'package:kadesh/domain/services/notifications.dart';
 import '../services/auth_service.dart';
 import '../controllers/auth_controller.dart';
 

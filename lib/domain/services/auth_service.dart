@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pet_app/data/models/user.dart';
-import 'package:pet_app/domain/mutations/auth.dart';
+import 'package:kadesh/data/models/user.dart';
+import 'package:kadesh/domain/mutations/auth.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -64,14 +64,8 @@ class AuthService {
       );
 
       if (result.status == LoginStatus.success) {
-        final AccessToken accessToken = result.accessToken!;
-        print('Access Token: ${accessToken}');
-        print('User ID: ${accessToken}');
-
         final userData = await FacebookAuth.instance.getUserData();
 
-        print("userData");
-        print(userData);
         final displayName = userData["name"] ?? '';
         final parts = displayName.trim().split(" ");
 
@@ -94,14 +88,11 @@ class AuthService {
         final data = response.data['data']['customAuth']['data'];
         return KUser.fromJson(data);
       } else if (result.status == LoginStatus.cancelled) {
-        print('Login cancelled');
         return null;
       } else {
-        print('Login failed: ${result.message}');
         return null;
       }
     } catch (e) {
-      print('Error during Facebook login: $e');
       return null;
     }
   }
