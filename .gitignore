@@ -53,6 +53,7 @@ app.*.map.json
 # Ignorar todo en la carpeta .idea
 .dart_tool/package_config_subset
 .dart_tool/package_config.json
-.vscode
 ios/Podfile.lock
 android/app/src/main/res/values/strings.xml
+.env
+.env.dev

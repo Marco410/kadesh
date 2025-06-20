@@ -1,4 +1,4 @@
-package com.kadesh.app
+package com.kadesh.mc
 
 import io.flutter.embedding.android.FlutterActivity
 
